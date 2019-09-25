@@ -79,7 +79,7 @@
 
     String serachAll = SerachTableData.getInstance()
              .setTableName("Student")
-             .getTableAllDataSQL(null);//这里面传入null代表按照表的顺序排列，床褥Order语句则按照Order语句进行排列
+             .getTableAllDataSQL(null);//这里面传入null代表按照表的顺序排列，传入Order语句则按照Order语句进行排列
 
     输出的SQL语句：
     SELECT * FROM Student;
@@ -103,3 +103,5 @@
 
     输出的SQL语句：
     SELECT name,id FROM Student WHERE age > 20 ORDER BY id DESC;
+
+&emsp;&emsp;此库不止可以构建以上SQL语句，还可以构建很多SQL语句哦，具体读者可以自行看笔者的封装的代码，当然笔者也会不断更新，欢迎提出意见。
