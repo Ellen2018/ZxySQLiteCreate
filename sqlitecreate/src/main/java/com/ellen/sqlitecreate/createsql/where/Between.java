@@ -10,6 +10,7 @@ package com.ellen.sqlitecreate.createsql.where;
 public class Between {
     private Object leftValue;
     private Object rightValue;
+    private String filedName;
     private boolean isContainsWhere = false;
 
     public static Between getInstance(boolean isContainsWhere){
@@ -28,12 +29,18 @@ public class Between {
         return this;
     }
 
+    public Between setFiledName(String filedName) {
+        this.filedName = filedName;
+        return this;
+    }
+
     public String createSQL(){
         StringBuilder stringBuilder = new StringBuilder();
         if(isContainsWhere){
             stringBuilder.append("WHERE ");
         }
-        stringBuilder.append("BETWEEN ");
+        stringBuilder.append(filedName);
+        stringBuilder.append(" BETWEEN ");
         if(leftValue instanceof String){
             stringBuilder.append("'"+leftValue+"'");
         }else {
