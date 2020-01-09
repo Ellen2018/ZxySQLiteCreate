@@ -70,7 +70,7 @@ public class AddManyRowToTable extends BaseSql {
         stringBuilder.append("(");
         stringBuilder.append(getStringSQL(fieldList));
         stringBuilder.append(") ");
-        stringBuilder.append("VALUES");
+        stringBuilder.append("VALUES ");
         for (int i = 0; i < listList.size(); i++) {
             stringBuilder.append("(");
             stringBuilder.append(getStringSQL(listList.get(i)));
