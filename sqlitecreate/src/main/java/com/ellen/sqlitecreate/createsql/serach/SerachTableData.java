@@ -1,7 +1,6 @@
 package com.ellen.sqlitecreate.createsql.serach;
 
 import com.ellen.sqlitecreate.createsql.helper.BaseSql;
-import com.ellen.sqlitecreate.createsql.helper.WhereSymbolEnum;
 import com.ellen.sqlitecreate.createsql.helper.WhereValue;
 
 import java.util.ArrayList;
@@ -42,87 +41,87 @@ public class SerachTableData extends BaseSql {
         return this;
     }
 
-    public SerachTableData addEqualWhereValue(String whereFieldName, Object value){
-        return addWherValue(whereFieldName, WhereSymbolEnum.EQUAL,value);
-    }
+//    public SerachTableData addEqualWhereValue(String whereFieldName, Object value){
+//        return addWherValue(whereFieldName, WhereSymbolEnum.EQUAL,value);
+//    }
+//
+//    public SerachTableData addNoEqualWhereValue(String whereFieldName, Object value){
+//        return addWherValue(whereFieldName,WhereSymbolEnum.NO_EQUAl,value);
+//    }
+//
+//    public SerachTableData addMoreThanTheWhereValue(String whereFieldName, Object value){
+//        return addWherValue(whereFieldName,WhereSymbolEnum.MORE_THAN,value);
+//    }
+//
+//    public SerachTableData addMoreThanTheEqualWhereValue(String whereFieldName, Object value){
+//        return addWherValue(whereFieldName,WhereSymbolEnum.MORE_THAN_EQUAL,value);
+//    }
+//
+//    public SerachTableData addLessThanWhereValue(String whereFieldName, Object value){
+//        return addWherValue(whereFieldName,WhereSymbolEnum.LESS_THAN,value);
+//    }
+//
+//    public SerachTableData addLessThanEqualWhereValue(String whereFieldName, Object value){
+//        return addWherValue(whereFieldName,WhereSymbolEnum.LESS_THAN_EQUAL,value);
+//    }
+//
+//    public SerachTableData addLikeWhereValue(String whereFieldName,String likeValueString){
+//        return addWherValue(whereFieldName, WhereSymbolEnum.LIKE,likeValueString);
+//    }
+//
+//    private SerachTableData addWherValue(String whereName,WhereSymbolEnum whereSymbolEnum, Object value){
+//        WhereValue whereValue = new WhereValue(whereName,whereSymbolEnum.getSymbol(),value);
+//        whereValueMap.put(whereName,whereValue);
+//        return this;
+//    }
 
-    public SerachTableData addNoEqualWhereValue(String whereFieldName, Object value){
-        return addWherValue(whereFieldName,WhereSymbolEnum.NO_EQUAl,value);
-    }
-
-    public SerachTableData addMoreThanTheWhereValue(String whereFieldName, Object value){
-        return addWherValue(whereFieldName,WhereSymbolEnum.MORE_THAN,value);
-    }
-
-    public SerachTableData addMoreThanTheEqualWhereValue(String whereFieldName, Object value){
-        return addWherValue(whereFieldName,WhereSymbolEnum.MORE_THAN_EQUAL,value);
-    }
-
-    public SerachTableData addLessThanWhereValue(String whereFieldName, Object value){
-        return addWherValue(whereFieldName,WhereSymbolEnum.LESS_THAN,value);
-    }
-
-    public SerachTableData addLessThanEqualWhereValue(String whereFieldName, Object value){
-        return addWherValue(whereFieldName,WhereSymbolEnum.LESS_THAN_EQUAL,value);
-    }
-
-    public SerachTableData addLikeWhereValue(String whereFieldName,String likeValueString){
-        return addWherValue(whereFieldName, WhereSymbolEnum.LIKE,likeValueString);
-    }
-
-    private SerachTableData addWherValue(String whereName,WhereSymbolEnum whereSymbolEnum, Object value){
-        WhereValue whereValue = new WhereValue(whereName,whereSymbolEnum.getSymbol(),value);
-        whereValueMap.put(whereName,whereValue);
-        return this;
-    }
-
-    /**
-     * 生成不带排序效果的sql查询语句
-     * @return
-     */
-    private String createSQL(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("SELECT ");
-        if(isAddField) {
-            stringBuilder.append(getStringSQL(selectFieldNameList) + " ");
-        }else {
-            stringBuilder.append("* ");
-        }
-        stringBuilder.append("FROM "+tableName);
-        if(whereValueMap.size() > 0) {
-            stringBuilder.append(" WHERE " + getWhereSQLString(whereValueMap));
-        }
-        stringBuilder.append(";");
-        return stringBuilder.toString();
-    }
-
-    /**
-     * 生成带排序效果的sql查询语句
-     * @param orderFieldName
-     * @param isDESC
-     * @return
-     */
-    private String createOrderSQL(String orderFieldName,boolean isDESC){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("SELECT ");
-        if(isAddField) {
-            stringBuilder.append(getStringSQL(selectFieldNameList) + " ");
-        }else {
-            stringBuilder.append("* ");
-        }
-        stringBuilder.append("FROM "+tableName);
-        if(whereValueMap.size() > 0) {
-            stringBuilder.append(" WHERE " + getWhereSQLString(whereValueMap)+" ");
-        }
-        stringBuilder.append("ORDER BY "+orderFieldName+" ");
-        if(isDESC){
-            stringBuilder.append("DESC");
-        }else {
-            stringBuilder.append("ASC");
-        }
-        stringBuilder.append(";");
-        return stringBuilder.toString();
-    }
+//    /**
+//     * 生成不带排序效果的sql查询语句
+//     * @return
+//     */
+//    public String createSQL(){
+//        StringBuilder stringBuilder = new StringBuilder();
+//        stringBuilder.append("SELECT ");
+//        if(isAddField) {
+//            stringBuilder.append(getStringSQL(selectFieldNameList) + " ");
+//        }else {
+//            stringBuilder.append("* ");
+//        }
+//        stringBuilder.append("FROM "+tableName);
+//        if(whereValueMap.size() > 0) {
+//            stringBuilder.append(" WHERE " + getWhereSQLString(whereValueMap));
+//        }
+//        stringBuilder.append(";");
+//        return stringBuilder.toString();
+//    }
+//
+//    /**
+//     * 生成带排序效果的sql查询语句
+//     * @param orderFieldName
+//     * @param isDESC
+//     * @return
+//     */
+//    public String createOrderSQL(String orderFieldName,boolean isDESC){
+//        StringBuilder stringBuilder = new StringBuilder();
+//        stringBuilder.append("SELECT ");
+//        if(isAddField) {
+//            stringBuilder.append(getStringSQL(selectFieldNameList) + " ");
+//        }else {
+//            stringBuilder.append("* ");
+//        }
+//        stringBuilder.append("FROM "+tableName);
+//        if(whereValueMap.size() > 0) {
+//            stringBuilder.append(" WHERE " + getWhereSQLString(whereValueMap)+" ");
+//        }
+//        stringBuilder.append("ORDER BY "+orderFieldName+" ");
+//        if(isDESC){
+//            stringBuilder.append("DESC");
+//        }else {
+//            stringBuilder.append("ASC");
+//        }
+//        stringBuilder.append(";");
+//        return stringBuilder.toString();
+//    }
 
     /**
      * 传入自定义的where语句(不带排序效果)
