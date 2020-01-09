@@ -23,6 +23,7 @@ public class DeleteTableDataRow extends BaseSql {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("DELETE FROM "+tableName+" WHERE ");
         stringBuilder.append(whereString);
+        stringBuilder.append(";");
         return stringBuilder.toString();
     }
 
