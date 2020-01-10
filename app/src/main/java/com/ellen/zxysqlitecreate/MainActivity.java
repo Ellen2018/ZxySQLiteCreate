@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         String sql = CreateTable.getInstance()
                 .setTableName("student")
-                .addField(SQLField.getPrimaryKeyField("id","integer",true))
-                .addField(SQLField.getOrdinaryField("name","text(20)"))
+                .addField(SQLField.getPrimaryKeyField("id","integer",false))
+                .addField(SQLField.getAutoEndStringField("name","text(20)","NOT NULL"))
                 .createSQLIfNotExists();
         Log.e("Ellen2018", "添加多条数据:" + sql);
     }

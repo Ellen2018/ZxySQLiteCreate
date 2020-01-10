@@ -45,7 +45,13 @@
     输出的SQL语句:
     CREATE TABLE Student(name text,id integer(10)  PRIMARY KEY AUTOINCREMENT);
 
-方式非常简单，通过CreateTable类进行构建,SQLField是指数据库中的Field属性，你可以自己查看SQLField类查看如何构建对应的数据库字段类型，笔者已经封装好了。
+方式非常简单，通过CreateTable类进行构建,SQLField是指数据库中的Field属性，你可以自己查看SQLField类查看如何构建对应的数据库字段类型，笔者已经封装好了。如下所示:
+
+     SQLField.getPrimaryKeyField("id","integer",true)->id integer PRIMARY KEY AUTOINCREMENT
+     SQLField.getOrdinaryField("name","text")->name text  
+     SQLField.getContainsDefaultValueField("name","text(20)","Ellen")->name text(20)  DEFAULT 'Ellen' NOT NULL  
+     SQLField.getNotNullValueField("name","text(20)")->name text(20) NOT NULL  
+     SQLField.getAutoEndStringField("name","text(20)","NOT NULL")->name text(20) NOT NULL(注意此方式为自定义方式，如果笔者给出的几种构建Field的方式不太满足你的需求，请使用这种方式构建)
 
 #### 2.1.2 增加数据到数据库
 
