@@ -10,20 +10,29 @@ public class BaseSql {
 
     /**
      * 创建表的时候将Field集合映射为SQL子句
-    * @param SQLFieldList
+    * @param sqlFieldList
      * @return
      */
-    protected String getFieldString(List<SQLField> SQLFieldList){
+    protected String getFieldString(List<SQLField> sqlFieldList){
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < SQLFieldList.size(); i++) {
-            SQLField SQLField = SQLFieldList.get(i);
-            stringBuilder.append(SQLField.getName() + " " + SQLField.getFiledType());
-            if (SQLField.getAutoEndString() != null) {
-                stringBuilder.append(" " + SQLField.getAutoEndString());
+        for (int i = 0; i < sqlFieldList.size(); i++) {
+            SQLField sqlField = sqlFieldList.get(i);
+            stringBuilder.append(sqlField.getName() + " " + sqlField.getFiledType());
+            if (sqlField.getAutoEndString() != null) {
+                stringBuilder.append(" " + sqlField.getAutoEndString());
             }
-            if (i != SQLFieldList.size() - 1) {
+            if (i != sqlFieldList.size() - 1) {
                 stringBuilder.append(",");
             }
+        }
+        return stringBuilder.toString();
+    }
+
+    protected String getFieldString(SQLField sqlField){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(sqlField.getName() + " " + sqlField.getFiledType());
+        if (sqlField.getAutoEndString() != null) {
+            stringBuilder.append(" " + sqlField.getAutoEndString());
         }
         return stringBuilder.toString();
     }

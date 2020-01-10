@@ -16,6 +16,7 @@ import com.ellen.sqlitecreate.createsql.helper.WhereSymbolEnum;
 import com.ellen.sqlitecreate.createsql.order.Order;
 import com.ellen.sqlitecreate.createsql.serach.SerachTableData;
 import com.ellen.sqlitecreate.createsql.serach.SerachTableExist;
+import com.ellen.sqlitecreate.createsql.update.UpdateTableColumn;
 import com.ellen.sqlitecreate.createsql.update.UpdateTableDataRow;
 import com.ellen.sqlitecreate.createsql.update.UpdateTableName;
 import com.ellen.sqlitecreate.createsql.where.Between;
@@ -31,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String sql = Order.getInstance(true)
-                .setFirstOrderFieldName("age")
-                .setSecondOrderFieldName("name")
-                .setIsDesc(false)
+        String sql = UpdateTableColumn.getInstanc()
+                .setTableName("student")
+                .setTargetFieldName("age")
+                .setNewSqlField(SQLField.getNotNullValueField("name_new","text(20)"))
                 .createSQL();
         Log.e("Ellen2018", "添加多条数据:" + sql);
     }

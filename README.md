@@ -156,9 +156,29 @@
     输出的SQL语句：
     UPDATE Student SET name='未知' WHERE name = 'Ellen2018' AND age >= 25;
 
-#### 2.3.3 修改表中字段的名字
+#### 2.3.3 修改表中字段的名字 & 类型
 
-貌似没有封装，待笔者有时间加上
+1.将student表的age列名修改为age_new？
+
+    String sql = UpdateTableColumn.getInstanc()
+                .setTableName("student")
+                .setTargetFieldName("age")
+                .setNewFieldName("age_new")
+                .createSQL();
+
+    输出的SQL语句:
+    EXEC sp_rename 'student.[age]','age_new','COLUMN';
+
+2.将student表的name列名修改为name_new,且字段类型为text(20)非空？
+
+    String sql = UpdateTableColumn.getInstanc()
+                .setTableName("student")
+                .setTargetFieldName("age")
+                .setNewSqlField(SQLField.getNotNullValueField("name_new","text(20)"))
+                .createSQL();
+
+    输出的SQL语句:
+    ALTER TABLE student CHANGE age name_new text(20)  NOT NULL;
 
 ### 2.4 查询相关
 
