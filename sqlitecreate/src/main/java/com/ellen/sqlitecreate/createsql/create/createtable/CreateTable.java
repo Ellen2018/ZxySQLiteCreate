@@ -33,7 +33,7 @@ public class CreateTable extends BaseSql {
     }
 
     public CreateTable addField(List<SQLField> sqlFieldList) {
-        sqlFieldList.addAll(sqlFieldList);
+        this.sqlFieldList.addAll(sqlFieldList);
         return this;
     }
 

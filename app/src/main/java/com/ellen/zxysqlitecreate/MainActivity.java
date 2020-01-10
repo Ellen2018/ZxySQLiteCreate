@@ -32,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String sql = UpdateTableColumn.getInstanc()
+        String sql = CreateTable.getInstance()
                 .setTableName("student")
-                .setTargetFieldName("age")
-                .setNewSqlField(SQLField.getNotNullValueField("name_new","text(20)"))
-                .createSQL();
+                .addField(SQLField.getPrimaryKeyField("id","integer",true))
+                .addField(SQLField.getOrdinaryField("name","text(20)"))
+                .createSQLIfNotExists();
         Log.e("Ellen2018", "添加多条数据:" + sql);
     }
 }
