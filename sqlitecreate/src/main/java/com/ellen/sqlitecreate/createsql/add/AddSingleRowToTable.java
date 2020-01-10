@@ -13,9 +13,12 @@ public class AddSingleRowToTable extends BaseSql {
     private String tableName;
     private List<Value> valueList;
 
+    private AddSingleRowToTable(){
+        valueList = new ArrayList<>();
+    }
+
     public static AddSingleRowToTable getInstance(){
         AddSingleRowToTable addRowToTable = new AddSingleRowToTable();
-        addRowToTable.valueList = new ArrayList<>();
         return addRowToTable;
     }
 

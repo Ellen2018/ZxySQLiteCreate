@@ -7,9 +7,12 @@ public class Order {
     private boolean isDESC = true;
     private boolean isContainsOrder = true;
 
+    private Order(boolean isContainsOrder){
+        this.isContainsOrder = isContainsOrder;
+    }
+
     public static Order getInstance(boolean isContainsOrder){
-        Order order = new Order();
-        order.isContainsOrder = isContainsOrder;
+        Order order = new Order(isContainsOrder);
         return order;
     }
 

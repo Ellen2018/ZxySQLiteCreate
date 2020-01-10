@@ -11,11 +11,14 @@ import java.util.List;
 public class CreateTable extends BaseSql {
 
     private String tableName;
-    private List<SQLField> SQLFieldList;
+    private List<SQLField> sqlFieldList;
+
+    private CreateTable(){
+        sqlFieldList = new ArrayList<>();
+    }
 
     public static CreateTable getInstance() {
         CreateTable createTable = new CreateTable();
-        createTable.SQLFieldList = new ArrayList<>();
         return createTable;
     }
 
@@ -25,19 +28,19 @@ public class CreateTable extends BaseSql {
     }
 
     public CreateTable addField(SQLField SQLField) {
-        SQLFieldList.add(SQLField);
+        sqlFieldList.add(SQLField);
         return this;
     }
 
     public CreateTable addField(List<SQLField> sqlFieldList) {
-        SQLFieldList.addAll(sqlFieldList);
+        sqlFieldList.addAll(sqlFieldList);
         return this;
     }
 
     public String createSQL() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("CREATE TABLE " + tableName + "(");
-        stringBuilder.append(getFieldString(SQLFieldList));
+        stringBuilder.append(getFieldString(sqlFieldList));
         stringBuilder.append(");");
         return stringBuilder.toString();
     }
@@ -45,7 +48,7 @@ public class CreateTable extends BaseSql {
     public String createSQLIfNotExists() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("CREATE TABLE IF NOT EXISTS " + tableName + "(");
-        stringBuilder.append(getFieldString(SQLFieldList));
+        stringBuilder.append(getFieldString(sqlFieldList));
         stringBuilder.append(");");
         return stringBuilder.toString();
     }

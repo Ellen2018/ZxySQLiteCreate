@@ -18,10 +18,13 @@ public class AddManyRowToTable extends BaseSql {
     private List<String> fieldList;
     private List<List<String>> listList;
 
+    private AddManyRowToTable(){
+        fieldList = new ArrayList<>();
+        listList = new ArrayList<>();
+    }
+
     public static AddManyRowToTable getInstance() {
         AddManyRowToTable addManyRowToTable = new AddManyRowToTable();
-        addManyRowToTable.fieldList = new ArrayList<>();
-        addManyRowToTable.listList = new ArrayList<>();
         return addManyRowToTable;
     }
 

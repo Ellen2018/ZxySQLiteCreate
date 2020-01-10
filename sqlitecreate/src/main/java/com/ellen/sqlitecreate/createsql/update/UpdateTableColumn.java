@@ -13,7 +13,7 @@ public class UpdateTableColumn extends BaseSql {
     private String newFieldName;
     private SQLField newSqlField;
 
-    public static UpdateTableColumn getInstanc(){
+    public static UpdateTableColumn getInstance(){
         UpdateTableColumn updateTableColumn = new UpdateTableColumn();
         return updateTableColumn;
     }

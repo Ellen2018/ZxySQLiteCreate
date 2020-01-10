@@ -13,9 +13,12 @@ public class Between {
     private String filedName;
     private boolean isContainsWhere = false;
 
+    private Between(boolean isContainsWhere){
+        this.isContainsWhere = isContainsWhere;
+    }
+
     public static Between getInstance(boolean isContainsWhere){
-        Between between = new Between();
-        between.isContainsWhere = isContainsWhere;
+        Between between = new Between(isContainsWhere);
         return between;
     }
 

@@ -12,13 +12,16 @@ public class Where {
     private int size = 0;
     private boolean isContainsWhere = true;
 
-    public static Where getInstance(boolean isContainsWhere) {
-        Where where = new Where();
-        where.stringBuilder = new StringBuilder();
-        where.isContainsWhere = isContainsWhere;
-        if(where.isContainsWhere) {
-            where.stringBuilder.append("WHERE ");
+    private Where(boolean isContainsWhere){
+        stringBuilder = new StringBuilder();
+        this.isContainsWhere = isContainsWhere;
+        if(this.isContainsWhere) {
+            stringBuilder.append("WHERE ");
         }
+    }
+
+    public static Where getInstance(boolean isContainsWhere) {
+        Where where = new Where(isContainsWhere);
         return where;
     }
 

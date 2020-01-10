@@ -13,9 +13,12 @@ public class UpdateTableDataRow extends BaseSql {
     private String tableName;
     private Map<String,Object> setValueMap;
 
+    private UpdateTableDataRow(){
+        setValueMap = new HashMap<>();
+    }
+
     public static UpdateTableDataRow getInstance(){
         UpdateTableDataRow updateTableColumn = new UpdateTableDataRow();
-        updateTableColumn.setValueMap = new HashMap<>();
         return updateTableColumn;
     }
 

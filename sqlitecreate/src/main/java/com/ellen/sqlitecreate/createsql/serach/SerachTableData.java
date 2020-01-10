@@ -15,9 +15,12 @@ public class SerachTableData extends BaseSql {
     private List<String> selectFieldNameList;
     private boolean isAddField = false;
 
+    private SerachTableData(){
+        selectFieldNameList = new ArrayList<>();
+    }
+
     public static SerachTableData getInstance(){
         SerachTableData serachTableData  = new SerachTableData();
-        serachTableData.selectFieldNameList = new ArrayList<>();
         return serachTableData;
     }
 
