@@ -57,13 +57,15 @@
 
 1.如何添加一条数据到Student表？
 
-    String addSQL = AddSingleRowToTable.getInstance()
-                .setTableName("Student")
+    String sql = AddSingleRowToTable.getInstance()
+                .setTableName("student")
+                .addData(new Value("id",1))
                 .addData(new Value("name","Ellen2018"))
+                .addData(new Value("age",23))
                 .createSQL();
 
     输出的SQL语句：
-    INSERT INTO Student (name) VALUES('Ellen2018');
+    INSERT INTO student (id,name,age) VALUES(1,'Ellen2018',23);
 
 2.如何增加多条数据到student表中？
 
