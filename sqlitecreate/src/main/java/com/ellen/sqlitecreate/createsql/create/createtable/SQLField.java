@@ -23,7 +23,7 @@ public class SQLField {
         return new SQLField(name,fieldType,true,isAutoInCrement);
     }
 
-    public static SQLField getContainsDefaultValueField(String name, String fieldType, Object defaultValue){
+    public static SQLField getField(String name, String fieldType, Object defaultValue){
         return new SQLField(name,fieldType,false,defaultValue);
     }
 
@@ -31,8 +31,12 @@ public class SQLField {
         return new SQLField(name,fieldType,false,null);
     }
 
-    public static SQLField getNotNullContainsDefaultValueField(String name, String fieldType, Object defaultValue){
+    public static SQLField getNotNullField(String name, String fieldType, Object defaultValue){
         return new SQLField(name,fieldType,false,defaultValue);
+    }
+
+    public static SQLField getNotNullField(String name, String fieldType, Object defaultValue,boolean isUnique){
+        return new SQLField(name,fieldType,false,isUnique,defaultValue);
     }
 
     /**
@@ -97,6 +101,28 @@ public class SQLField {
         }
         if(!isCanNull){
             stringBuilder.append(" NOT NULL");
+        }
+        this.name = name;
+        this.filedType = filedType;
+        if(stringBuilder.toString().length() > 0)
+            this.autoEndString = stringBuilder.toString();
+    }
+
+    private SQLField(String name, String filedType, boolean isCanNull,boolean isUnique, Object defaultValue){
+        StringBuilder stringBuilder = new StringBuilder();
+        if(defaultValue != null){
+            stringBuilder.append(" DEFAULT ");
+            if(defaultValue instanceof String){
+                stringBuilder.append("'"+defaultValue+"'");
+            }else {
+                stringBuilder.append(defaultValue);
+            }
+        }
+        if(!isCanNull){
+            stringBuilder.append(" NOT NULL");
+        }
+        if(isUnique){
+            stringBuilder.append(" UNIQUE ");
         }
         this.name = name;
         this.filedType = filedType;
