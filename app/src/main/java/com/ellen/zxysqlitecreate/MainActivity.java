@@ -32,12 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String sql = AddSingleRowToTable.getInstance()
-                .setTableName("student")
-                .addData(new Value("id",1))
-                .addData(new Value("name","Ellen2018"))
-                .addData(new Value("age",23))
-                .createSQL();
-        Log.e("Ellen2018", "添加多条数据:" + sql);
+        SQLField sqlField = SQLField.getField("a","text",34,true);
+        String createTableSql = CreateTable.getInstance().setTableName("haha").addField(sqlField).createSQLIfNotExists();
+        Log.e("Ellen2018", "添加多条数据:" + createTableSql);
     }
 }
