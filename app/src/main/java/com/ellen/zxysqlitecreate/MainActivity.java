@@ -32,8 +32,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SQLField sqlField = SQLField.getField("a","text",34,true);
-        String createTableSql = CreateTable.getInstance().setTableName("haha").addField(sqlField).createSQLIfNotExists();
-        Log.e("Ellen2018", "添加多条数据:" + createTableSql);
+        String sql = AddSingleRowToTable.getInstance()
+                .setTableName("student")
+                .addData(new Value("id",1))
+                .addData(new Value("name","Ellen2018"))
+                .addData(new Value("age",23))
+                .createSQL();
+
+
+
+        String createSql = CreateTable.getInstance().setTableName("sdsad").addField(
+                //通过全约束构建模式进行构建
+                SQLField.getInstance("a","text(20)")
+                        .setMajorKey(true)
+                        .setAuto(true)
+                        .setUnique(true)
+                        .setCheckWhereSql("a > 8")
+                        .setDefaultValue("4")
+                        .createSqlFiled()
+
+        ).createSQL();
+        Log.e("Ellen2018", "添加多条数据:" + createSql);
     }
 }
