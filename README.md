@@ -18,13 +18,10 @@
 &emsp;&emsp;x,y,z是笔者库的版本值，例如：1.0.0
 
 ## 1.介绍
-
 &emsp;&emsp;此库是专门用于SQL语句构建，基本常用的SQL语句笔者已经封装在此库中,你可以轻轻松松构建一条建表语句，where语句等。
 
 ## 2.基本用法：
-
 ### 2.1 增加相关
-
 #### 2.1.1 创建表
 
 1.如何创建一个名字为Student的表？
@@ -52,6 +49,20 @@
      SQLField.getContainsDefaultValueField("name","text(20)","Ellen")->name text(20)  DEFAULT 'Ellen' NOT NULL  
      SQLField.getNotNullValueField("name","text(20)")->name text(20) NOT NULL  
      SQLField.getAutoEndStringField("name","text(20)","NOT NULL")->name text(20) NOT NULL(注意此方式为自定义方式，如果笔者给出的几种构建Field的方式不太满足你的需求，请使用这种方式构建)
+
+还可以通过下面这种方式构建出你想要的任何类型的SQLField哦,至于这些方法的作用，聪明的你无需笔者啰嗦吧: 
+
+    //通过全约束构建模式进行构建
+    SQLField sqlField =  SQLField.getInstance("a","text(20)")
+                                 .setMajorKey(true)
+                                 .setNotNull(true)
+                                 .setAuto(true)
+                                 .setUnique(true)
+                                 .setCheckWhereSql("a > 8")
+                                 .setDefaultValue("4")
+                                 .createSqlFiled();//构建完成以后必须调用createSqlFiled方法
+
+
 
 #### 2.1.2 增加数据到数据库
 
