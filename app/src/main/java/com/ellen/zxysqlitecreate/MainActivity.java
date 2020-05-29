@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 .addData(new Value("age",23))
                 .createSQL();
 
-        
+
 
         String createSql = CreateTable.getInstance().setTableName("sdsad").addField(
                 //通过全约束构建模式进行构建
