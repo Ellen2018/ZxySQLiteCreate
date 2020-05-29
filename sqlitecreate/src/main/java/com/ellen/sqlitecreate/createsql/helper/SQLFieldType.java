@@ -12,8 +12,9 @@ public class SQLFieldType {
         this.length = length;
     }
 
-    public SQLFieldType(String sqlType){
-
+    public SQLFieldType(String sqlType,Integer length){
+        this.typeString = sqlType;
+        this.length = length;
     }
 
     public String getTypeString() {

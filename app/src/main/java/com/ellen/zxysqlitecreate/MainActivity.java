@@ -11,6 +11,7 @@ import com.ellen.sqlitecreate.createsql.create.createtable.SQLField;
 import com.ellen.sqlitecreate.createsql.delete.DeleteTable;
 import com.ellen.sqlitecreate.createsql.delete.DeleteTableColumn;
 import com.ellen.sqlitecreate.createsql.delete.DeleteTableDataRow;
+import com.ellen.sqlitecreate.createsql.helper.SQLFieldType;
 import com.ellen.sqlitecreate.createsql.helper.Value;
 import com.ellen.sqlitecreate.createsql.helper.WhereSymbolEnum;
 import com.ellen.sqlitecreate.createsql.order.Order;
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 .addData(new Value("age",23))
                 .createSQL();
 
-
+        SQLFieldType sqlFieldType = new SQLFieldType("BIGINT",23);
+        Log.e("Ellen2018","自定义数据类型:"+sqlFieldType.getSQLFieldTypeString());
 
         String createSql = CreateTable.getInstance().setTableName("sdsad").addField(
                 //通过全约束构建模式进行构建
