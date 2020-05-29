@@ -26,6 +26,7 @@ import com.ellen.sqlitecreate.createsql.where.WhereIn;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -38,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 .addData(new Value("name","Ellen2018"))
                 .addData(new Value("age",23))
                 .createSQL();
-
-
 
         String createSql = CreateTable.getInstance().setTableName("sdsad").addField(
                 //通过全约束构建模式进行构建

@@ -4,6 +4,8 @@ public enum SQLFieldTypeEnum {
 
     INTEGER("integer"),
     BIG_INT("bigint"),
+    LONG_TEXT("LONGTEXT"),
+    MEDIUM_TEXT("MEDIUMTEXT"),
     TEXT("text"),
     REAL("real"),
     BLOB("blob"),
